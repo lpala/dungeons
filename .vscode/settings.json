@@ -1,0 +1,13 @@
+{
+    "editor.fontFamily": "'Cascadia Code SemiBold'",
+    "editor.fontLigatures": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.flake8Args": [
+        "--ignore=E501"
+    ],
+    "autopep8.args": [
+        "--igonre=501"
+    ],
+    "code-runner.runInTerminal": true,
+}
