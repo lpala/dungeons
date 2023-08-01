@@ -1,25 +1,26 @@
-# import random
+import random
 from pprint import pprint
 import enum
 import json
+from dungeons import MapCreator
 # import requests
 
 
-EntryDirection = enum.IntEnum('EntryDirection', 'North, South, East, West')
+WorldDirections = enum.IntEnum('WorldDirections', 'North, South, East, West')
 RoomType = enum.IntEnum('RoomType', 'Empty, Blind, TwoExits, ThreeExits, Crossroad')
 RoomStatus = enum.IntEnum('RoomStatus', 'Empty, inProgress, Solved')
 
 unsolvedRoomsIDs = set()
 
 maxWidth = 7
-maxHeight = 9
+maxHeight = 5
 mapTiles = list()
-entrance = EntryDirection.South
+entranceDirection = WorldDirections.South
 
 # --------------------DEFINITIONS---------------------------#
 
 
-def createMap():
+def createMapStructure():
     mapSingleRoom = {
         'id': 0,
         'type': RoomType.Empty,
@@ -28,7 +29,7 @@ def createMap():
         'X_coords': int(),
         'Y_coords': int(),
         'nExits': 0,
-        'exitsDirections': ()
+        'exitsDirections': dict()
     }
 
     counter = 0
@@ -44,22 +45,22 @@ def createMap():
     return (mapFile)
 
 
-def defineStartingPoint(mapTiles, entrance):
+def defineStartingPoint(mapTiles, entranceDirection):
     for room in mapTiles['Rooms']:
-        match entrance:
-            case EntryDirection.South:
+        match entranceDirection:
+            case WorldDirections.South:
                 calculated_room = mapTiles['Rooms'][maxHeight * maxWidth - maxWidth // 2 - 1]
                 modifyStartingPointRoomParameters(calculated_room)
                 return calculated_room['id']
-            case EntryDirection.North:
+            case WorldDirections.North:
                 calculated_room = mapTiles['Rooms'][(maxWidth) // 2 - 1]
                 modifyStartingPointRoomParameters(calculated_room)
                 return calculated_room['id']
-            case EntryDirection.East:
+            case WorldDirections.East:
                 calculated_room = mapTiles['Rooms'][maxWidth * (maxHeight // 2 + 1) - 1]
                 modifyStartingPointRoomParameters(calculated_room)
                 return calculated_room['id']
-            case EntryDirection.West:
+            case WorldDirections.West:
                 calculated_room = mapTiles['Rooms'][maxWidth * (maxHeight // 2)]
                 modifyStartingPointRoomParameters(calculated_room)
                 return calculated_room['id']
@@ -88,7 +89,7 @@ def visualizeMap(mapTiles):
         print(vis)
 
 
-def drawIndexedMap(mapTiles):
+""" def drawIndexedMap(mapTiles):
     for height in range(1, maxHeight + 1):
         for width in range(1, maxWidth + 1):
             ind = [
@@ -96,43 +97,99 @@ def drawIndexedMap(mapTiles):
                 for room in mapTiles['Rooms']
                 if room["Y_coords"] == height
             ]
-        print(ind)
+        print(ind) """
 
 
-def solveCaves(entryDir):
+""" def solveCaves(entryDir):
 
     # howManyExits = random.choices([1, 2, 3], [30, 60, 10])
 
-    directions = {
-        'north': [0, -maxHeight],
-        'south': [0, maxHeight],
-        'east': [1, 0],
-        'west': [-1, 0]
-    }
-    limits = {
-        'north': [i for i in range(maxWidth * maxHeight) if i < maxWidth],
-        'south': [i for i in range(maxWidth * maxHeight) if i >= maxWidth * maxHeight - maxWidth],
-        'east': [(i * maxWidth) + maxWidth - 1 for i in range(maxHeight)],
-        'west': [(i * maxWidth) for i in range(maxHeight)]
-    }
-
-    pprint(directions)
     pprint(limits)
+    for i in range(12):
+        if len(unsolvedRoomsIDs) > 0:
+            print('UnsolvedRoomsIDs:', unsolvedRoomsIDs)
+            findPossibleDirections(directions, limits)
+    verifyExits(directions, limits) """
 
 
-def findPossibleDirections():
+def solveMainPath(directions, limits):
+    for iterationStep in range(1.5 * ((maxHeight + maxWidth) // 2)):
+        pass
+
+
+def findPossibleDirections2(directions, limits):
+    pass
+
+
+def findPossibleDirections(directions, limits):
+    tempUnsolvedRoomID = set()
     for singleRoomID in unsolvedRoomsIDs:
-        print('bede zmieniac pokoj:', mapTiles['Rooms'][singleRoomID])
+        possibleDirections = dict()
+        for direction in WorldDirections._member_names_:
+            if singleRoomID not in limits[direction]:
+                searchedRoomID = singleRoomID + directions[direction]
+            else:
+                continue
+
+            if mapTiles['Rooms'][searchedRoomID]['roomStatus'] == RoomStatus.Solved:
+                continue
+            else:
+                if random.random() > 0.45:
+                    possibleDirections[searchedRoomID] = direction
+                    mapTiles['Rooms'][singleRoomID]['exitsDirections'] = possibleDirections
+                    mapTiles['Rooms'][singleRoomID]['type'] = RoomType.Blind
+                    tempUnsolvedRoomID.add(searchedRoomID)
+                    mapTiles['Rooms'][searchedRoomID]['roomStatus'] = RoomStatus.inProgress
+                else:
+                    mapTiles['Rooms'][searchedRoomID]['roomStatus'] == RoomStatus.Solved
+        print('Possible directions:', possibleDirections)
+        mapTiles['Rooms'][singleRoomID]['roomStatus'] = RoomStatus.Solved
+    unsolvedRoomsIDs.clear()
+    for i in tempUnsolvedRoomID:
+        unsolvedRoomsIDs.add(i)
+    tempUnsolvedRoomID.clear()
+
+#  for i in possibleDirections.keys():
+#     unsolvedRoomsIDs.add(i)
+
+
+def verifyExits(directions, limits):
+    for oneRoom in mapTiles['Rooms']:
+        oneRoom['exitsDirections'] = dict()
+        for direction in WorldDirections._member_names_:
+            if oneRoom['id'] not in limits[direction] and oneRoom['type'] == RoomType.Blind:
+                searchedRoomID = oneRoom['id'] + directions[direction]
+                if mapTiles['Rooms'][searchedRoomID]['type'] == RoomType.Blind:
+                    print(oneRoom['id'], "szukam kierunku", searchedRoomID)
+                    oneRoom['exitsDirections'][searchedRoomID] = direction
 
 
 # --------------------PROGRAM---------------------------#
-mapTiles = createMap()
-startingRoomID = defineStartingPoint(mapTiles, entrance)
+
+dungeonsMap = MapCreator(maxWidth, maxHeight)
+
+
+dungeonsMap.createDebugMap(maxWidth, maxHeight, 'id')
+
+
+print(dungeonsMap[6].__dict__)
+print(dungeonsMap[7].__dict__)
+
+
+
+
+
+
+""" mapTiles = createMapStructure()
+
+startingRoomID = defineStartingPoint(mapTiles, entranceDirection)
 print("Entrance Room ID:", startingRoomID)
 
 visualizeMap(mapTiles)
 drawIndexedMap(mapTiles)
 
-solveCaves(entrance)
+solveCaves(entranceDirection)
+visualizeMap(mapTiles)
 
-saveJSONtoFile(mapTiles)
+saveJSONtoFile(mapTiles) """
+# print (dungeons.CreateMap.createX(maxWidth, maxHeight))
