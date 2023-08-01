@@ -15,7 +15,7 @@ unsolvedRoomsIDs = set()
 maxWidth = 7
 maxHeight = 5
 mapTiles = list()
-entranceDirection = WorldDirections.South
+entranceDirection = WorldDirections.South.name
 
 # --------------------DEFINITIONS---------------------------#
 
@@ -45,7 +45,7 @@ def createMapStructure():
     return (mapFile)
 
 
-def defineStartingPoint(mapTiles, entranceDirection):
+""" def defineStartingPoint(mapTiles, entranceDirection):
     for room in mapTiles['Rooms']:
         match entranceDirection:
             case WorldDirections.South:
@@ -63,7 +63,7 @@ def defineStartingPoint(mapTiles, entranceDirection):
             case WorldDirections.West:
                 calculated_room = mapTiles['Rooms'][maxWidth * (maxHeight // 2)]
                 modifyStartingPointRoomParameters(calculated_room)
-                return calculated_room['id']
+                return calculated_room['id'] """
 
 
 def modifyStartingPointRoomParameters(roomID):
@@ -166,13 +166,17 @@ def verifyExits(directions, limits):
 
 # --------------------PROGRAM---------------------------#
 
-dungeonsMap = MapCreator(maxWidth, maxHeight)
+dungeonsMap = MapCreator(maxWidth, maxHeight, WorldDirections)
 
+dungeonsMap.defineBoardLimits(maxWidth, maxHeight, WorldDirections)
+dungeonsMap.defineStartingPoint(entranceDirection)
 
 dungeonsMap.createDebugMap(maxWidth, maxHeight, 'id')
 
 
-print(dungeonsMap[6].__dict__)
+print(dungeonsMap.limits)
+
+print(dungeonsMap[31].__dict__)
 print(dungeonsMap[7].__dict__)
 
 

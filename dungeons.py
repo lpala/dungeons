@@ -15,7 +15,7 @@ class Dungeon:
 
 class MapCreator:
 
-    def __init__(self, width: int, height: int):
+    def __init__(self, width: int, height: int, WorldDirections):
         self.yCoords = ((i // width) + 1 for i in range(width * height))
         self.xCoords = ((i % width) + 1 for i in range(width * height))
 
@@ -25,8 +25,25 @@ class MapCreator:
     def __getitem__(self, key):
         return self.generatedDungeons[key]
 
+    def defineBoardLimits(self, width: int, height: int, WorldDirections):
+        self.limits = {
+            WorldDirections.North.name: [i for i in range(width * height) if i < width],
+            WorldDirections.South.name: [i for i in range(width * height) if i >= width * height - width],
+            WorldDirections.East.name: [(i * width) + width - 1 for i in range(height)],
+            WorldDirections.West.name: [(i * width) for i in range(height)]
+        }
+
+    def defineStartingPoint(self, entranceDirection):
+        counter = (len(self.limits[entranceDirection]))// 2
+        entranceRoomId = self.limits[entranceDirection][counter]
+        self.generatedDungeons[entranceRoomId].isEntrance = True
+        print('side with entrance', entranceRoomId)
+
 
     def createDebugMap(self, width: int, height: int, value = 'id'):
+        """Calculate and draws the debug map with values
+        """
+
         for h in range(1, height + 1):
             for _ in range(1, width + 1):
                 index = [
@@ -35,24 +52,3 @@ class MapCreator:
                     if i.yCoord == h
                 ]
             print(index)
-
-
-    def randomPrint(self):
-        print (self.generatedDungeons[1].id)
-
-
-"""     def directions(self):
-        self.directions = {
-            'North': -maxWidth,
-            'South': maxWidth,
-            'East': 1,
-            'West': -1
-        }
-
-    def getBoardLimits(self):
-        self.limits = {
-            WorldDirections.North.name: [i for i in range(maxWidth * maxHeight) if i < maxWidth],
-            WorldDirections.South.name: [i for i in range(maxWidth * maxHeight) if i >= maxWidth * maxHeight - maxWidth],
-            WorldDirections.East.name: [(i * maxWidth) + maxWidth - 1 for i in range(maxHeight)],
-            WorldDirections.West.name: [(i * maxWidth) for i in range(maxHeight)]
-        } """
