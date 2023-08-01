@@ -1,3 +1,5 @@
+import json
+
 class Dungeon:
     idCounter = 0
 
@@ -33,10 +35,11 @@ class MapCreator:
             WorldDirections.West.name: [(i * width) for i in range(height)]
         }
 
-    def defineStartingPoint(self, entranceDirection):
+    def defineStartingPoint(self, entranceDirection, RoomType, RoomStatus):
         counter = (len(self.limits[entranceDirection]))// 2
         entranceRoomId = self.limits[entranceDirection][counter]
         self.generatedDungeons[entranceRoomId].isEntrance = True
+        self.generatedDungeons[entranceRoomId].roomStatus = RoomStatus.inProgress.value
         print('side with entrance', entranceRoomId)
 
 
@@ -52,3 +55,9 @@ class MapCreator:
                     if i.yCoord == h
                 ]
             print(index)
+
+    def saveMapToJSON(self):
+        roomsList = [i.__dict__ for i in self.generatedDungeons]
+        mapJSON = json.dumps(roomsList, indent = 4)
+        with open("mapGenerated.json", "w") as outfile:
+            outfile.write(str(mapJSON))

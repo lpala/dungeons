@@ -20,31 +20,6 @@ entranceDirection = WorldDirections.South.name
 # --------------------DEFINITIONS---------------------------#
 
 
-def createMapStructure():
-    mapSingleRoom = {
-        'id': 0,
-        'type': RoomType.Empty,
-        'roomStatus': RoomStatus.Empty,
-        'isEntrance': False,
-        'X_coords': int(),
-        'Y_coords': int(),
-        'nExits': 0,
-        'exitsDirections': dict()
-    }
-
-    counter = 0
-    for height in range(maxHeight):
-        for width in range(maxWidth):
-            tempSingleRoom = mapSingleRoom.copy()
-            tempSingleRoom['id'] = counter
-            tempSingleRoom['X_coords'] = width + 1
-            tempSingleRoom['Y_coords'] = height + 1
-            counter += 1
-            mapTiles.append(tempSingleRoom)
-    mapFile = {'Rooms': mapTiles}
-    return (mapFile)
-
-
 """ def defineStartingPoint(mapTiles, entranceDirection):
     for room in mapTiles['Rooms']:
         match entranceDirection:
@@ -71,33 +46,6 @@ def modifyStartingPointRoomParameters(roomID):
     roomID['isEntrance'] = True
     roomID['roomStatus'] = RoomStatus.inProgress
     unsolvedRoomsIDs.add(roomID['id'])
-
-
-def saveJSONtoFile(mapTiles):
-    mapJSON = json.dumps(mapTiles, indent=4)
-    with open("mapGenerated.json", "w") as outfile:
-        outfile.write(mapJSON)
-
-
-def visualizeMap(mapTiles):
-    for height in range(1, maxHeight + 1):
-        vis = [
-            room["type"].value
-            for room in mapTiles['Rooms']
-            if room["Y_coords"] == height
-        ]
-        print(vis)
-
-
-""" def drawIndexedMap(mapTiles):
-    for height in range(1, maxHeight + 1):
-        for width in range(1, maxWidth + 1):
-            ind = [
-                (f"{(room['id']):02d}")
-                for room in mapTiles['Rooms']
-                if room["Y_coords"] == height
-            ]
-        print(ind) """
 
 
 """ def solveCaves(entryDir):
@@ -167,9 +115,8 @@ def verifyExits(directions, limits):
 # --------------------PROGRAM---------------------------#
 
 dungeonsMap = MapCreator(maxWidth, maxHeight, WorldDirections)
-
 dungeonsMap.defineBoardLimits(maxWidth, maxHeight, WorldDirections)
-dungeonsMap.defineStartingPoint(entranceDirection)
+dungeonsMap.defineStartingPoint(entranceDirection, RoomType, RoomStatus)
 
 dungeonsMap.createDebugMap(maxWidth, maxHeight, 'id')
 
@@ -178,8 +125,7 @@ print(dungeonsMap.limits)
 
 print(dungeonsMap[31].__dict__)
 print(dungeonsMap[7].__dict__)
-
-
+dungeonsMap.saveMapToJSON()
 
 
 
