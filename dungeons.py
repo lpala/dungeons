@@ -1,4 +1,5 @@
 import json
+import random
 
 
 class Dungeon:
@@ -18,7 +19,7 @@ class Dungeon:
 
 class MapCreator:
 
-    def __init__(self, width: int, height: int, WorldDirections):
+    def __init__(self, width: int, height: int):
         self.yCoords = ((i // width) + 1 for i in range(width * height))
         self.xCoords = ((i % width) + 1 for i in range(width * height))
 
@@ -37,16 +38,13 @@ class MapCreator:
         return self.limits
 
     def defineStartingPoint(self, entranceDirection, RoomStatus):
-        counter = (len(self.limits[entranceDirection])) // 2
-        entranceRoomId = self.limits[entranceDirection][counter]
+        #counter = (len(self.limits[entranceDirection])) // 2
+        entranceRoomId = random.choice(self.limits[entranceDirection])
         self.generatedDungeons[entranceRoomId].isEntrance = True
         self.generatedDungeons[entranceRoomId].roomStatus = RoomStatus.inProgress.value
         return entranceRoomId
 
     def createDebugMap(self, width: int, height: int, value='id'):
-        """Calculates and draws the debug map using object values
-        """
-
         for h in range(1, height + 1):
             for _ in range(1, width + 1):
                 index = [
