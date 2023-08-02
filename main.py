@@ -1,52 +1,70 @@
-import random
 from pprint import pprint
+import random
 import enum
-import json
 from dungeons import MapCreator
+
+from dungeonsGUI import DrawMap
+from tkinter import *
+
 # import requests
 
+maxWidth = 15
+maxHeight = 11
+mapTiles = list()
 
 WorldDirections = enum.IntEnum('WorldDirections', 'North, South, East, West')
 RoomType = enum.IntEnum('RoomType', 'Empty, Blind, TwoExits, ThreeExits, Crossroad')
 RoomStatus = enum.IntEnum('RoomStatus', 'Empty, inProgress, Solved')
 
-unsolvedRoomsIDs = set()
+movementValue = {WorldDirections.North.name: -maxWidth,
+                 WorldDirections.South.name: maxWidth,
+                 WorldDirections.East.name: 1,
+                 WorldDirections.West.name: -1
+                 }
 
-maxWidth = 7
-maxHeight = 5
-mapTiles = list()
+unsolvedRoomsIDs = set()
 entranceDirection = WorldDirections.South.name
 
 # --------------------DEFINITIONS---------------------------#
 
+# unsolvedRoomsIDs.add(roomID['id'])
+def corridorSolver(entranceRoomId, boardLimits):
+    counter = 0
+    currentRoom = entranceRoomId
+    solvedRooms = [entranceRoomId]
+    while counter < 20:
+        
+        possibleDirections = list()
+        for direction in WorldDirections._member_names_:
+            
+            if currentRoom in boardLimits[direction]:
+                continue
+            elif currentRoom + movementValue[direction] in solvedRooms:
+                continue
+            elif checkIfNeighbour((currentRoom + movementValue[direction]), movementValue[direction], movementValue, solvedRooms): #tu jest blad
+                print('nejbor!')
+                continue
+            else:
+                possibleDirections.append(direction)
+        print(currentRoom, possibleDirections) 
+        dir = (random.choice(possibleDirections))
+        currentRoom +=  movementValue[dir]
+        solvedRooms.append(currentRoom)
+        counter += 1
+    return solvedRooms
 
-""" def defineStartingPoint(mapTiles, entranceDirection):
-    for room in mapTiles['Rooms']:
-        match entranceDirection:
-            case WorldDirections.South:
-                calculated_room = mapTiles['Rooms'][maxHeight * maxWidth - maxWidth // 2 - 1]
-                modifyStartingPointRoomParameters(calculated_room)
-                return calculated_room['id']
-            case WorldDirections.North:
-                calculated_room = mapTiles['Rooms'][(maxWidth) // 2 - 1]
-                modifyStartingPointRoomParameters(calculated_room)
-                return calculated_room['id']
-            case WorldDirections.East:
-                calculated_room = mapTiles['Rooms'][maxWidth * (maxHeight // 2 + 1) - 1]
-                modifyStartingPointRoomParameters(calculated_room)
-                return calculated_room['id']
-            case WorldDirections.West:
-                calculated_room = mapTiles['Rooms'][maxWidth * (maxHeight // 2)]
-                modifyStartingPointRoomParameters(calculated_room)
-                return calculated_room['id'] """
+def checkIfNeighbour(currentRoom, movement, movementValue, solvedRooms):
 
-
-def modifyStartingPointRoomParameters(roomID):
-    roomID['type'] = RoomType.Blind
-    roomID['isEntrance'] = True
-    roomID['roomStatus'] = RoomStatus.inProgress
-    unsolvedRoomsIDs.add(roomID['id'])
-
+    hasNeighbour = False
+    for direction in WorldDirections._member_names_:
+        if currentRoom - movement in solvedRooms: #zawsze prawdziwy
+            print (currentRoom - movement)
+            continue
+        if currentRoom + movementValue[direction] in solvedRooms:
+            hasNeighbour = True
+            print('tu tez')
+    print (hasNeighbour)
+    return hasNeighbour
 
 """ def solveCaves(entryDir):
 
@@ -63,10 +81,6 @@ def modifyStartingPointRoomParameters(roomID):
 def solveMainPath(directions, limits):
     for iterationStep in range(1.5 * ((maxHeight + maxWidth) // 2)):
         pass
-
-
-def findPossibleDirections2(directions, limits):
-    pass
 
 
 def findPossibleDirections(directions, limits):
@@ -97,9 +111,6 @@ def findPossibleDirections(directions, limits):
         unsolvedRoomsIDs.add(i)
     tempUnsolvedRoomID.clear()
 
-#  for i in possibleDirections.keys():
-#     unsolvedRoomsIDs.add(i)
-
 
 def verifyExits(directions, limits):
     for oneRoom in mapTiles['Rooms']:
@@ -113,33 +124,28 @@ def verifyExits(directions, limits):
 
 
 # --------------------PROGRAM---------------------------#
+root = Tk()
+root.title('Dungeons Map')
 
 dungeonsMap = MapCreator(maxWidth, maxHeight, WorldDirections)
-dungeonsMap.defineBoardLimits(maxWidth, maxHeight, WorldDirections)
-dungeonsMap.defineStartingPoint(entranceDirection, RoomType, RoomStatus)
+boardLimits = dungeonsMap.defineBoardLimits(maxWidth, maxHeight, WorldDirections)
+entranceRoomId = dungeonsMap.defineStartingPoint(entranceDirection, RoomStatus)
+print('Entrance room:', entranceRoomId)
 
-dungeonsMap.createDebugMap(maxWidth, maxHeight, 'id')
-
-
-print(dungeonsMap.limits)
-
-print(dungeonsMap[31].__dict__)
-print(dungeonsMap[7].__dict__)
 dungeonsMap.saveMapToJSON()
 
+solvedRooms = corridorSolver(entranceRoomId, boardLimits)
 
 
+newgui = DrawMap(root, maxWidth, maxHeight)
 
-""" mapTiles = createMapStructure()
+newgui.colorizeBorders(dungeonsMap.limits, WorldDirections)
+newgui.colorizeSolved(solvedRooms)
+newgui.colorizeEntrance(entranceRoomId)
 
-startingRoomID = defineStartingPoint(mapTiles, entranceDirection)
-print("Entrance Room ID:", startingRoomID)
 
-visualizeMap(mapTiles)
-drawIndexedMap(mapTiles)
+root.mainloop()
 
-solveCaves(entranceDirection)
-visualizeMap(mapTiles)
-
-saveJSONtoFile(mapTiles) """
-# print (dungeons.CreateMap.createX(maxWidth, maxHeight))
+# dungeonsMap.createDebugMap(maxWidth, maxHeight, 'id')
+# dungeonsMap.createDebugMap(maxWidth, maxHeight, 'roomStatus')
+# print(dungeonsMap[31].__dict__)

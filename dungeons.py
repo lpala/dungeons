@@ -1,12 +1,13 @@
 import json
 
+
 class Dungeon:
     idCounter = 0
 
     def __init__(self, xCoord, yCoord):
         self.id = Dungeon.idCounter
-        self.roomType = 'Empty'
-        self.roomStatus = 'Empty'
+        self.roomType = 1
+        self.roomStatus = 1
         self.isEntrance = False
         self.xCoord = xCoord
         self.yCoord = yCoord
@@ -23,7 +24,6 @@ class MapCreator:
 
         self.generatedDungeons = [Dungeon(next(self.xCoords), next(self.yCoords)) for _ in range(width * height)]
 
-
     def __getitem__(self, key):
         return self.generatedDungeons[key]
 
@@ -34,17 +34,17 @@ class MapCreator:
             WorldDirections.East.name: [(i * width) + width - 1 for i in range(height)],
             WorldDirections.West.name: [(i * width) for i in range(height)]
         }
+        return self.limits
 
-    def defineStartingPoint(self, entranceDirection, RoomType, RoomStatus):
-        counter = (len(self.limits[entranceDirection]))// 2
+    def defineStartingPoint(self, entranceDirection, RoomStatus):
+        counter = (len(self.limits[entranceDirection])) // 2
         entranceRoomId = self.limits[entranceDirection][counter]
         self.generatedDungeons[entranceRoomId].isEntrance = True
         self.generatedDungeons[entranceRoomId].roomStatus = RoomStatus.inProgress.value
-        print('side with entrance', entranceRoomId)
+        return entranceRoomId
 
-
-    def createDebugMap(self, width: int, height: int, value = 'id'):
-        """Calculate and draws the debug map with values
+    def createDebugMap(self, width: int, height: int, value='id'):
+        """Calculates and draws the debug map using object values
         """
 
         for h in range(1, height + 1):
@@ -58,6 +58,6 @@ class MapCreator:
 
     def saveMapToJSON(self):
         roomsList = [i.__dict__ for i in self.generatedDungeons]
-        mapJSON = json.dumps(roomsList, indent = 4)
+        mapJSON = json.dumps(roomsList, indent=4)
         with open("mapGenerated.json", "w") as outfile:
             outfile.write(str(mapJSON))
