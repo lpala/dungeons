@@ -1,15 +1,12 @@
-from setups import *
+from setups import boardHeight, boardWidth, WorldDirections, movementValue
 import random
-import dungeons
+
 
 class SolveMap:
     def __init__(self, entranceRoomId, boardLimits):
-        self.maxWidth = boardWidth
-        self.maxHeight = boardHeight
-        self.WorldDirections = WorldDirections
+
         self.boardLimits = boardLimits
         self.entranceRoomId = entranceRoomId
-        self.movementValue = movementValue
         self.solvedRooms = [self.entranceRoomId]
         self.solvedRooms = self.solvePath(0)
 
@@ -21,12 +18,12 @@ class SolveMap:
     def solvePath(self, id):
         counter = 0
         currentRoom = self.solvedRooms[id]
-        while counter < (2 * (self.maxWidth + self.maxHeight)):
+        while counter < (2 * (boardWidth + boardHeight)):
             possibleDirections = self.findPossibleDirections(currentRoom)
             if len(possibleDirections) == 0:
                 break
             dir = (random.choice(possibleDirections))
-            currentRoom += self.movementValue[dir]
+            currentRoom += movementValue[dir]
             self.solvedRooms.append(currentRoom)
             counter += 1
         return self.solvedRooms
@@ -38,15 +35,15 @@ class SolveMap:
 
     def findPossibleDirections(self, currentRoom):
         possibleDirections = list()
-        for direction in self.WorldDirections:
-            numberOfNeighbours = self.countNeighbours((currentRoom + self.movementValue[direction]), self.movementValue, self.solvedRooms)
+        for direction in WorldDirections:
+            numberOfNeighbours = self.countNeighbours((currentRoom + movementValue[direction]), self.solvedRooms)
             if currentRoom in self.boardLimits[direction]:
                 continue
-            elif currentRoom + self.movementValue[direction] in self.solvedRooms:
+            elif currentRoom + movementValue[direction] in self.solvedRooms:
                 continue
             elif numberOfNeighbours > 2:
                 continue
-            elif numberOfNeighbours == 2 and currentRoom + 2 * self.movementValue[direction] in self.solvedRooms:
+            elif numberOfNeighbours == 2 and currentRoom + 2 * movementValue[direction] in self.solvedRooms:
                 possibleDirections.append(direction)
             elif numberOfNeighbours == 2:
                 continue
@@ -54,9 +51,9 @@ class SolveMap:
                 possibleDirections.append(direction)
         return possibleDirections
 
-    def countNeighbours(self, currentRoom, movementValue, solvedRooms):
+    def countNeighbours(self, currentRoom, solvedRooms):
         neighbourCount = 0
-        for direction in self.WorldDirections:
+        for direction in WorldDirections:
             if currentRoom + movementValue[direction] in solvedRooms:
                 neighbourCount += 1
         return neighbourCount
@@ -65,10 +62,12 @@ class SolveMap:
         roomsWithItems = list()
         while len(roomsWithItems) <= len(self.solvedRooms) // 6:
             pickedRoom = random.choice(self.solvedRooms)
-            if self.countNeighbours(pickedRoom, movementValue, roomsWithItems) == 0:
+            if self.countNeighbours(pickedRoom, roomsWithItems) == 0:
                 roomsWithItems.append(pickedRoom)
-        # [DrawMap().drawChestsIcons(self, self.maxWidth, id, 'skyblue') for id in roomsWithItems]
         return roomsWithItems
+
+    def calculateDistance(self):
+        pass
 
     def verifyExits(self):
         pass

@@ -1,12 +1,13 @@
-from pprint import pprint
+# from pprint import pprint
 
 import random
 from dungeons import CreateBaseMap
-from dungeonsGUI import DrawMap
+from drawGUI import DrawMap
 from mapSolver import SolveMap
 
-from tkinter import *
-from setups import *
+from tkinter import Tk
+from setups import boardHeight, boardWidth, WorldDirections, RoomType
+
 
 # --------------------DEFINITIONS---------------------------#
 
@@ -40,8 +41,9 @@ solvedRoomsWithItems = solvedMap.roomsWithItems
 dungeonCanvas = DrawMap(root, boardWidth, boardHeight)
 rectMap = [dungeonCanvas.createMapElement(id, 'room', 'grey') for id in range(boardWidth * boardHeight)]
 itemIcons = [dungeonCanvas.createMapElement(id, 'chest', 'blue', True) for id in solvedRoomsWithItems]
+print(rectMap)
 print(itemIcons)
-dungeonCanvas.colorizeBorders(boardLimits, WorldDirections, 'dimgray')
+dungeonCanvas.colorizeBorders(boardLimits, 'dimgray')
 dungeonCanvas.colorizeRooms(solvedMap.solvedRooms, 'chocolate')
 dungeonCanvas.colorizeRooms([entranceRoomId], 'red')
 
@@ -49,7 +51,7 @@ dungeonsMap.saveMapToJSON(dungeonsMap)
 
 root.mainloop()
 
-#dungeonCanvas.colorizeRooms(solvedMap.roomsWithItems, 'yellow')
+# dungeonCanvas.colorizeRooms(solvedMap.roomsWithItems, 'yellow')
 # dungeonCanvas.drawChestsIcons(maxWidth, 20, 'red')
 # dungeonCanvas.colorizeEntrance(entranceRoomId)
 # dungeonsMap.createDebugMap(dungeonsMap, 'id')
