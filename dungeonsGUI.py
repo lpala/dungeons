@@ -1,105 +1,68 @@
 from tkinter import Canvas, Button
-# from tkineter import ttk
-# from tkinter import *
-import random
+from setups import *
 
 
 class DrawMap:
-    def __init__(self, root, maxWidth, maxHeight) -> None:
-        rectSize = 40
+    def __init__(self, root, boardWidth, boardHeight) -> None:
+        self.rectSize = 40
+        self.iconSize = 20
+        self.margin = 10
 
-        self.mapWindow = Canvas(root, height=maxHeight * rectSize + 20, width=maxWidth * rectSize + 20)
+        self.mapWindow = Canvas(root, height=boardHeight * self.rectSize + 20, width=boardWidth * self.rectSize + 20)
         self.mapWindow.grid()
 
         quitButton = Button(root, text="Quit", command=root.destroy)
         quitButton.grid()
 
-        self.yCoords = ((i // maxWidth) + 1 for i in range(maxWidth * maxHeight))
-        self.xCoords = ((i % maxWidth) + 1 for i in range(maxWidth * maxHeight))
-        self.id = (i for i in range(maxWidth * maxHeight))
-        self.rectMap = [self.createMapArray(next(self.xCoords), next(self.yCoords), next(self.id), rectSize) for _ in range(maxWidth * maxHeight)]
+  
+    
+    def createMapElement(self, id, name, color, isIcon=False) -> int:
+        
+        rectSize = self.rectSize
+        iconSize = self.iconSize
+        margin = self.margin
+        
+        iconMargin = 0
+        if isIcon:
+            iconMargin = (rectSize - iconSize / 2)
 
-    def createMapArray(self, w, h, id, rectSize):
+        x0, y0, x1, y1 = (margin + (id % boardWidth ) * rectSize + iconMargin,
+                          margin + (id // boardWidth) * rectSize + iconMargin,
+                          margin + rectSize + (id % boardWidth) * rectSize - iconMargin,
+                          margin + rectSize + (id // boardWidth) * rectSize - iconMargin)
+
+        tag = f"{name}_{id}"
+        canvasID = self.mapWindow.create_rectangle(x0,y0,x1,y1,
+                                             fill=color,
+                                             tags=tag
+                                             )
+        return {id: (canvasID, tag)}
+
+    def drawItemsIcons(self, id, name, color):
         counter = id
-        self.mapWindow.create_rectangle(10 + (w - 1) * rectSize,
-                                        10 + (h - 1) * rectSize,
-                                        10 + rectSize + (w - 1) * rectSize,
-                                        10 + rectSize + (h - 1) * rectSize,
-                                        fill='silver',
-                                        tags=f"square_{counter}"
-                                        )
+        rectSize = self.rectSize
+        iconSize = self.iconSize
+        margin = self.margin
 
-    def colorizeBorders(self, limits, WorldDirections):
-        for direction in WorldDirections._member_names_:
-            for i in limits[direction]:
-                border = (self.mapWindow.find_withtag(f'square_{i}'))
-                self.mapWindow.itemconfig(border, fill='dimgray')
+        x0, y0, x1, y1 = (margin + (id % boardWidth ) * rectSize + (rectSize - iconSize / 2),
+                          margin + (id // boardWidth) * rectSize + (rectSize - iconSize / 2),
+                          margin + rectSize + (id % boardWidth) * rectSize - (rectSize - iconSize / 2),
+                          margin + rectSize + (id // boardWidth) * rectSize - (rectSize - iconSize / 2),
+                          )
+        
+        tag = f"{name}_{counter}"
+        id = self.mapWindow.create_rectangle(
+                                             x0,y0,x1,y1,
+                                             fill=color,
+                                             tags=tag
+                                             )
+        return {id}
 
-    def colorizeSolved(self, solvedRooms):
-        for roomId in solvedRooms:
-            solvedRoom = (self.mapWindow.find_withtag(f'square_{roomId}'))
-            self.mapWindow.itemconfig(solvedRoom, fill='green')
+    def colorizeBorders(self, roomsList, WorldDirections, color):
+        for direction in WorldDirections:
+            self.colorizeRooms(roomsList[direction], color)
 
-    def colorizeEntrance(self, entranceRoomId):
-        entrance = (self.mapWindow.find_withtag(f'square_{entranceRoomId}'))
-        self.mapWindow.itemconfig(entrance, fill='red')
-
-
-class SolveMap:
-    def __init__(self, entranceRoomId, boardLimits, WorldDirections, movementValue, maxHeight, maxWidth):
-        self.maxWidth = maxWidth
-        self.maxHeight = maxHeight
-        self.WorldDirections = WorldDirections
-        self.boardLimits = boardLimits
-        self.entranceRoomId = entranceRoomId
-        self.movementValue = movementValue
-        self.solvedRooms = [self.entranceRoomId]
-        self.solvedRooms = self.solvePath(0)
-        self.solveAlterPaths()
-        self.solveAlterPaths()
-        self.solveAlterPaths()
-
-    def solvePath(self, id):
-        counter = 0
-        currentRoom = self.solvedRooms[id]
-        while counter < (2 * (self.maxWidth + self.maxHeight)):
-            possibleDirections = self.findPossibleDirections(currentRoom)
-            if len(possibleDirections) == 0:
-                print('path has died :(')
-                break
-            print(currentRoom, possibleDirections)
-            dir = (random.choice(possibleDirections))
-            currentRoom += self.movementValue[dir]
-            self.solvedRooms.append(currentRoom)
-            counter += 1
-        return self.solvedRooms
-
-    def solveAlterPaths(self):
-        possibleAlternatives = (random.sample(self.solvedRooms, 30))
-        for id in possibleAlternatives:
-            self.solvePath(self.solvedRooms.index(id))
-
-    def findPossibleDirections(self, currentRoom):
-        possibleDirections = list()
-        for direction in self.WorldDirections._member_names_:
-            numberOfNeighbours = self.countNeighbours((currentRoom + self.movementValue[direction]), self.movementValue, self.solvedRooms)
-            if currentRoom in self.boardLimits[direction]:
-                continue
-            elif currentRoom + self.movementValue[direction] in self.solvedRooms:
-                continue
-            elif numberOfNeighbours > 2:
-                continue
-            elif numberOfNeighbours == 2 and currentRoom + 2 * self.movementValue[direction] in self.solvedRooms:
-                possibleDirections.append(direction)
-            elif numberOfNeighbours == 2:
-                continue
-            else:
-                possibleDirections.append(direction)
-        return possibleDirections
-
-    def countNeighbours(self, currentRoom, movementValue, solvedRooms):
-        neighbourCount = 0
-        for direction in self.WorldDirections._member_names_:
-            if currentRoom + movementValue[direction] in solvedRooms:
-                neighbourCount += 1
-        return neighbourCount
+    def colorizeRooms(self, roomsList, color):
+        for roomId in roomsList:
+            roomsList = (self.mapWindow.find_withtag(f'room_{roomId}'))
+            self.mapWindow.itemconfig(roomsList, fill=color)

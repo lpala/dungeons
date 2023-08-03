@@ -1,6 +1,6 @@
 import json
 import random
-
+from setups import *
 
 class Dungeon:
     idCounter = 0
@@ -9,6 +9,7 @@ class Dungeon:
         self.id = Dungeon.idCounter
         self.roomType = 1
         self.roomStatus = 1
+        # self.tags = ["entrance"]
         self.isEntrance = False
         self.xCoord = xCoord
         self.yCoord = yCoord
@@ -17,45 +18,51 @@ class Dungeon:
         Dungeon.idCounter += 1
 
 
-class MapCreator:
+'''    def isEntrance() -> bool:
+        return "entrance" in self.tags'''
 
-    def __init__(self, width: int, height: int):
-        self.yCoords = ((i // width) + 1 for i in range(width * height))
-        self.xCoords = ((i % width) + 1 for i in range(width * height))
 
-        self.generatedDungeons = [Dungeon(next(self.xCoords), next(self.yCoords)) for _ in range(width * height)]
+class CreateBaseMap:
+
+    def __init__(self):
+        self.yCoords = ((i // boardWidth) + 1 for i in range(boardWidth * boardHeight))
+        self.xCoords = ((i % boardWidth) + 1 for i in range(boardWidth * boardHeight))
+
+        self.generatedDungeons = [Dungeon(next(self.xCoords), next(self.yCoords)) for _ in range(boardWidth * boardHeight)]
+        self.generatedDungeons[3].isEntrance
 
     def __getitem__(self, key):
         return self.generatedDungeons[key]
 
-    def defineBoardLimits(self, width: int, height: int, WorldDirections):
+    def defineBoardLimits(self):
         self.limits = {
-            WorldDirections.North.name: [i for i in range(width * height) if i < width],
-            WorldDirections.South.name: [i for i in range(width * height) if i >= width * height - width],
-            WorldDirections.East.name: [(i * width) + width - 1 for i in range(height)],
-            WorldDirections.West.name: [(i * width) for i in range(height)]
+            WorldDirections.North: [i for i in range(boardWidth * boardHeight) if i < boardWidth],
+            WorldDirections.South: [i for i in range(boardWidth * boardHeight) if i >= boardWidth * boardHeight - boardWidth],
+            WorldDirections.East: [(i * boardWidth) + boardWidth - 1 for i in range(boardHeight)],
+            WorldDirections.West: [(i * boardWidth) for i in range(boardHeight)]
         }
         return self.limits
 
-    def defineStartingPoint(self, entranceDirection, RoomStatus):
-        #counter = (len(self.limits[entranceDirection])) // 2
+    def defineStartingPoint(self, entranceDirection):
         entranceRoomId = random.choice(self.limits[entranceDirection])
         self.generatedDungeons[entranceRoomId].isEntrance = True
         self.generatedDungeons[entranceRoomId].roomStatus = RoomStatus.inProgress.value
         return entranceRoomId
 
-    def createDebugMap(self, width: int, height: int, value='id'):
-        for h in range(1, height + 1):
-            for _ in range(1, width + 1):
+    @staticmethod
+    def createDebugMap(dungeonsMap, value='id'):
+        for h in range(1, boardHeight + 1):
+            for _ in range(1, boardWidth + 1):
                 index = [
                     (i.__dict__)[value]
-                    for i in self.generatedDungeons
+                    for i in dungeonsMap
                     if i.yCoord == h
                 ]
             print(index)
 
-    def saveMapToJSON(self):
-        roomsList = [i.__dict__ for i in self.generatedDungeons]
+    @staticmethod
+    def saveMapToJSON(dungeonsMap):
+        roomsList = [i.__dict__ for i in dungeonsMap]
         mapJSON = json.dumps(roomsList, indent=4)
         with open("mapGenerated.json", "w") as outfile:
             outfile.write(str(mapJSON))
