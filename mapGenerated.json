@@ -4,9 +4,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            1,
+            1
+        ],
         "exitsDirections": {}
     },
     {
@@ -14,9 +15,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            2,
+            1
+        ],
         "exitsDirections": {}
     },
     {
@@ -24,69 +26,95 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            3,
+            1
+        ],
+        "exitsDirections": {
+            "South": 12,
+            "East": 3
+        }
     },
     {
         "id": 3,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            4,
+            1
+        ],
+        "exitsDirections": {
+            "East": 4,
+            "West": 2
+        }
     },
     {
         "id": 4,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            5,
+            1
+        ],
+        "exitsDirections": {
+            "East": 5,
+            "West": 3
+        }
     },
     {
         "id": 5,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            6,
+            1
+        ],
+        "exitsDirections": {
+            "South": 15,
+            "East": 6,
+            "West": 4
+        }
     },
     {
         "id": 6,
         "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "roomStatus": "Solved",
+        "isEntrance": true,
+        "coords": [
+            7,
+            1
+        ],
+        "exitsDirections": {
+            "East": 7,
+            "West": 5
+        }
     },
     {
         "id": 7,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            8,
+            1
+        ],
+        "exitsDirections": {
+            "South": 17,
+            "West": 6
+        }
     },
     {
         "id": 8,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            9,
+            1
+        ],
         "exitsDirections": {}
     },
     {
@@ -94,19 +122,23 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            10,
+            1
+        ],
+        "exitsDirections": {
+            "South": 19
+        }
     },
     {
         "id": 10,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            1,
+            2
+        ],
         "exitsDirections": {}
     },
     {
@@ -114,29 +146,38 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            2,
+            2
+        ],
+        "exitsDirections": {
+            "South": 21,
+            "East": 12
+        }
     },
     {
         "id": 12,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            3,
+            2
+        ],
+        "exitsDirections": {
+            "North": 2,
+            "West": 11
+        }
     },
     {
         "id": 13,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            4,
+            2
+        ],
         "exitsDirections": {}
     },
     {
@@ -144,9 +185,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            5,
+            2
+        ],
         "exitsDirections": {}
     },
     {
@@ -154,19 +196,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 1,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            6,
+            2
+        ],
+        "exitsDirections": {
+            "North": 5,
+            "South": 25
+        }
     },
     {
         "id": 16,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 1,
-        "nExits": 0,
+        "coords": [
+            7,
+            2
+        ],
         "exitsDirections": {}
     },
     {
@@ -174,59 +221,82 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            8,
+            2
+        ],
+        "exitsDirections": {
+            "North": 7,
+            "East": 18
+        }
     },
     {
         "id": 18,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            9,
+            2
+        ],
+        "exitsDirections": {
+            "East": 19,
+            "West": 17
+        }
     },
     {
         "id": 19,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            10,
+            2
+        ],
+        "exitsDirections": {
+            "North": 9,
+            "East": 20,
+            "West": 18
+        }
     },
     {
         "id": 20,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            1,
+            3
+        ],
+        "exitsDirections": {
+            "South": 30,
+            "East": 21,
+            "West": 19
+        }
     },
     {
         "id": 21,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            2,
+            3
+        ],
+        "exitsDirections": {
+            "North": 11,
+            "West": 20
+        }
     },
     {
         "id": 22,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            3,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -234,9 +304,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            4,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -244,9 +315,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            5,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -254,19 +326,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            6,
+            3
+        ],
+        "exitsDirections": {
+            "North": 15,
+            "South": 35
+        }
     },
     {
         "id": 26,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            7,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -274,9 +351,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            8,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -284,9 +362,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            9,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -294,9 +373,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            10,
+            3
+        ],
         "exitsDirections": {}
     },
     {
@@ -304,19 +384,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 2,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            1,
+            4
+        ],
+        "exitsDirections": {
+            "North": 20,
+            "South": 40
+        }
     },
     {
         "id": 31,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            2,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -324,9 +409,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            3,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -334,9 +420,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 2,
-        "nExits": 0,
+        "coords": [
+            4,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -344,9 +431,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            5,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -354,29 +442,38 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 3,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            6,
+            4
+        ],
+        "exitsDirections": {
+            "North": 25,
+            "East": 36
+        }
     },
     {
         "id": 36,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 3,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            7,
+            4
+        ],
+        "exitsDirections": {
+            "South": 46,
+            "West": 35
+        }
     },
     {
         "id": 37,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            8,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -384,9 +481,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            9,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -394,9 +492,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            10,
+            4
+        ],
         "exitsDirections": {}
     },
     {
@@ -404,19 +503,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 3,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            1,
+            5
+        ],
+        "exitsDirections": {
+            "North": 30,
+            "South": 50
+        }
     },
     {
         "id": 41,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            2,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -424,9 +528,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            3,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -434,9 +539,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            4,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -444,9 +550,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            5,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -454,9 +561,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            6,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -464,19 +572,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 3,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            7,
+            5
+        ],
+        "exitsDirections": {
+            "North": 36,
+            "South": 56
+        }
     },
     {
         "id": 47,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            8,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -484,9 +597,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            9,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -494,9 +608,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 3,
-        "nExits": 0,
+        "coords": [
+            10,
+            5
+        ],
         "exitsDirections": {}
     },
     {
@@ -504,19 +619,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 3,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            1,
+            6
+        ],
+        "exitsDirections": {
+            "North": 40,
+            "South": 60
+        }
     },
     {
         "id": 51,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            2,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -524,9 +644,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            3,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -534,9 +655,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            4,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -544,9 +666,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            5,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -554,9 +677,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            6,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -564,19 +688,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 4,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            7,
+            6
+        ],
+        "exitsDirections": {
+            "North": 46,
+            "South": 66
+        }
     },
     {
         "id": 57,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            8,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -584,9 +713,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            9,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -594,9 +724,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            10,
+            6
+        ],
         "exitsDirections": {}
     },
     {
@@ -604,29 +735,38 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 4,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            1,
+            7
+        ],
+        "exitsDirections": {
+            "North": 50,
+            "East": 61
+        }
     },
     {
         "id": 61,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 4,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            2,
+            7
+        ],
+        "exitsDirections": {
+            "South": 71,
+            "West": 60
+        }
     },
     {
         "id": 62,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            3,
+            7
+        ],
         "exitsDirections": {}
     },
     {
@@ -634,9 +774,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            4,
+            7
+        ],
         "exitsDirections": {}
     },
     {
@@ -644,39 +785,52 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 4,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            5,
+            7
+        ],
+        "exitsDirections": {
+            "South": 74,
+            "East": 65
+        }
     },
     {
         "id": 65,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 4,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            6,
+            7
+        ],
+        "exitsDirections": {
+            "East": 66,
+            "West": 64
+        }
     },
     {
         "id": 66,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 4,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            7,
+            7
+        ],
+        "exitsDirections": {
+            "North": 56,
+            "West": 65
+        }
     },
     {
         "id": 67,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 4,
-        "nExits": 0,
+        "coords": [
+            8,
+            7
+        ],
         "exitsDirections": {}
     },
     {
@@ -684,29 +838,37 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            9,
+            7
+        ],
+        "exitsDirections": {
+            "South": 78,
+            "East": 69
+        }
     },
     {
         "id": 69,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            10,
+            7
+        ],
+        "exitsDirections": {
+            "West": 68
+        }
     },
     {
         "id": 70,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            1,
+            8
+        ],
         "exitsDirections": {}
     },
     {
@@ -714,29 +876,38 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            2,
+            8
+        ],
+        "exitsDirections": {
+            "North": 61,
+            "East": 72
+        }
     },
     {
         "id": 72,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            3,
+            8
+        ],
+        "exitsDirections": {
+            "South": 82,
+            "West": 71
+        }
     },
     {
         "id": 73,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            4,
+            8
+        ],
         "exitsDirections": {}
     },
     {
@@ -744,19 +915,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            5,
+            8
+        ],
+        "exitsDirections": {
+            "North": 64,
+            "South": 84
+        }
     },
     {
         "id": 75,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            6,
+            8
+        ],
         "exitsDirections": {}
     },
     {
@@ -764,9 +940,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            7,
+            8
+        ],
         "exitsDirections": {}
     },
     {
@@ -774,9 +951,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            8,
+            8
+        ],
         "exitsDirections": {}
     },
     {
@@ -784,19 +962,24 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            9,
+            8
+        ],
+        "exitsDirections": {
+            "North": 68,
+            "South": 88
+        }
     },
     {
         "id": 79,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            10,
+            8
+        ],
         "exitsDirections": {}
     },
     {
@@ -804,9 +987,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            1,
+            9
+        ],
         "exitsDirections": {}
     },
     {
@@ -814,9 +998,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 5,
-        "nExits": 0,
+        "coords": [
+            2,
+            9
+        ],
         "exitsDirections": {}
     },
     {
@@ -824,39 +1009,53 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            3,
+            9
+        ],
+        "exitsDirections": {
+            "North": 72,
+            "East": 83
+        }
     },
     {
         "id": 83,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            4,
+            9
+        ],
+        "exitsDirections": {
+            "East": 84,
+            "West": 82
+        }
     },
     {
         "id": 84,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 5,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            5,
+            9
+        ],
+        "exitsDirections": {
+            "North": 74,
+            "South": 94,
+            "West": 83
+        }
     },
     {
         "id": 85,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            6,
+            9
+        ],
         "exitsDirections": {}
     },
     {
@@ -864,9 +1063,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            7,
+            9
+        ],
         "exitsDirections": {}
     },
     {
@@ -874,29 +1074,38 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            8,
+            9
+        ],
+        "exitsDirections": {
+            "South": 97,
+            "East": 88
+        }
     },
     {
         "id": 88,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            9,
+            9
+        ],
+        "exitsDirections": {
+            "North": 78,
+            "West": 87
+        }
     },
     {
         "id": 89,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            10,
+            9
+        ],
         "exitsDirections": {}
     },
     {
@@ -904,9 +1113,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            1,
+            10
+        ],
         "exitsDirections": {}
     },
     {
@@ -914,9 +1124,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            2,
+            10
+        ],
         "exitsDirections": {}
     },
     {
@@ -924,9 +1135,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            3,
+            10
+        ],
         "exitsDirections": {}
     },
     {
@@ -934,9 +1146,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            4,
+            10
+        ],
         "exitsDirections": {}
     },
     {
@@ -944,49 +1157,66 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            5,
+            10
+        ],
+        "exitsDirections": {
+            "North": 84,
+            "East": 95
+        }
     },
     {
         "id": 95,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            6,
+            10
+        ],
+        "exitsDirections": {
+            "East": 96,
+            "West": 94
+        }
     },
     {
         "id": 96,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            7,
+            10
+        ],
+        "exitsDirections": {
+            "East": 97,
+            "West": 95
+        }
     },
     {
         "id": 97,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
+        "coords": [
+            8,
+            10
+        ],
+        "exitsDirections": {
+            "North": 87,
+            "West": 96
+        }
     },
     {
         "id": 98,
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 6,
-        "nExits": 0,
+        "coords": [
+            9,
+            10
+        ],
         "exitsDirections": {}
     },
     {
@@ -994,1049 +1224,10 @@
         "roomType": 1,
         "roomStatus": 1,
         "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 100,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 101,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 6,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 102,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 103,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 104,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 105,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 106,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 107,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 108,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 109,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 110,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 111,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 112,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 113,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 114,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 115,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 116,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 117,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 118,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 7,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 119,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 120,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 121,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 122,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 123,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 124,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 125,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 126,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 127,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 128,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 129,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 130,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 131,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 132,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 133,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 134,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 135,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 8,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 136,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 137,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 138,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 139,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 140,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 141,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 142,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 143,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 144,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 145,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 146,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 147,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 148,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 149,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 150,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 151,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 152,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 9,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 153,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 154,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 155,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 156,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 157,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 158,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 159,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 160,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 161,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 162,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 163,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 164,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 165,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 166,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 167,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 168,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 169,
-        "roomType": 1,
-        "roomStatus": 2,
-        "isEntrance": true,
-        "xCoord": 17,
-        "yCoord": 10,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 170,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 171,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 172,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 173,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 174,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 175,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 176,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 177,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 178,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 179,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 180,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 181,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 182,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 183,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 184,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 185,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 186,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 11,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 187,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 1,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 188,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 2,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 189,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 3,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 190,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 4,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 191,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 5,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 192,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 6,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 193,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 7,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 194,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 8,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 195,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 9,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 196,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 10,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 197,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 11,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 198,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 12,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 199,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 13,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 200,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 14,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 201,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 15,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 202,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 16,
-        "yCoord": 12,
-        "nExits": 0,
-        "exitsDirections": {}
-    },
-    {
-        "id": 203,
-        "roomType": 1,
-        "roomStatus": 1,
-        "isEntrance": false,
-        "xCoord": 17,
-        "yCoord": 12,
-        "nExits": 0,
+        "coords": [
+            10,
+            10
+        ],
         "exitsDirections": {}
     }
 ]

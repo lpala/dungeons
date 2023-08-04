@@ -1,6 +1,5 @@
 import json
-import random
-from setups import boardHeight, boardWidth, WorldDirections, RoomStatus
+from setups import boardHeight, boardWidth, WorldDirections
 
 
 class Dungeon:
@@ -10,27 +9,24 @@ class Dungeon:
         self.id = Dungeon.idCounter
         self.roomType = 1
         self.roomStatus = 1
-        # self.tags = ["entrance"]
         self.isEntrance = False
-        self.xCoord = xCoord
-        self.yCoord = yCoord
-        self.nExits = 0
+        self.coords = [xCoord, yCoord]
         self.exitsDirections = dict()
         Dungeon.idCounter += 1
+        # self.tags = ["entrance"]
 
 
 '''    def isEntrance() -> bool:
         return "entrance" in self.tags'''
 
 
-class CreateBaseMap:
+class DungeonBoard:
 
     def __init__(self):
         self.yCoords = ((i // boardWidth) + 1 for i in range(boardWidth * boardHeight))
         self.xCoords = ((i % boardWidth) + 1 for i in range(boardWidth * boardHeight))
 
         self.generatedDungeons = [Dungeon(next(self.xCoords), next(self.yCoords)) for _ in range(boardWidth * boardHeight)]
-        self.generatedDungeons[3].isEntrance
 
     def __getitem__(self, key: int):
         return self.generatedDungeons[key]
@@ -43,12 +39,6 @@ class CreateBaseMap:
             WorldDirections.West: [(i * boardWidth) for i in range(boardHeight)]
         }
         return self.limits
-
-    def defineStartingPoint(self, entranceDirection: int):
-        entranceRoomId = random.choice(self.limits[entranceDirection])
-        self.generatedDungeons[entranceRoomId].isEntrance = True
-        self.generatedDungeons[entranceRoomId].roomStatus = RoomStatus.inProgress.value
-        return entranceRoomId
 
     @staticmethod
     def createDebugMap(dungeonsMap: list, value: str = 'id'):

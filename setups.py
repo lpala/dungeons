@@ -1,14 +1,39 @@
-import enum
+from enum import Enum
 import random
 
 
 '''Defines board dimensions'''
-boardWidth = random.randint(10, 20)
-boardHeight = random.randint(10, 20)
+boardWidth = random.randint(10, 10)
+boardHeight = random.randint(10, 10)
 
-WorldDirections = enum.IntEnum('WorldDirections', 'North, South, East, West')
-RoomType = enum.IntEnum('RoomType', 'Empty, Blind, TwoExits, ThreeExits, Crossroad')
-RoomStatus = enum.IntEnum('RoomStatus', 'Empty, inProgress, Solved')
+
+class GUISetups():
+    rectSize = 80
+    iconSize = 40
+    playerSize = 80
+    margin = 0
+
+
+class WorldDirections(Enum):
+    North = 1
+    South = 2
+    East = 3
+    West = 4
+
+
+class RoomType(Enum):
+    Empty = 1
+    Blind = 2
+    TwoExits = 3
+    ThreeExits = 4
+    Crossroad = 5
+
+
+class RoomStatus(Enum):
+    Empty = 1
+    inProgress = 2
+    Solved = 3
+
 
 movementValue = {WorldDirections.North: -boardWidth,
                  WorldDirections.South: boardWidth,

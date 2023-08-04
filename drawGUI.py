@@ -1,28 +1,33 @@
-from tkinter import Canvas, Button
-from setups import boardWidth, WorldDirections
+from tkinter import Canvas, Button, PhotoImage
+from setups import boardWidth, boardHeight,  WorldDirections, GUISetups
 
 
 class DrawMap:
-    def __init__(self, root, boardWidth, boardHeight) -> None:
-        self.rectSize = 40
-        self.iconSize = 20
-        self.margin = 10
-
-        self.mapWindow = Canvas(root, height=boardHeight * self.rectSize + 20, width=boardWidth * self.rectSize + 20)
+    def __init__(self, root, entranceRoomId) -> None:
+        print(5 * GUISetups.rectSize)
+        self.mapWindow = Canvas(root,height=5 * GUISetups.rectSize, width=5 * GUISetups.rectSize)
+        self.mapWindow.configure(scrollregion=(0, 0, GUISetups.rectSize * boardHeight , GUISetups.rectSize * boardWidth))
+        self.mapWindow.configure(confine=False)
+        #self.mapWindow.yview_moveto(GUISetups.rectSize//(boardHeight * GUISetups.rectSize) * (entranceRoomId // boardWidth))
+        #self.mapWindow.xview_moveto(GUISetups.rectSize//(boardWidth * GUISetups.rectSize) * (entranceRoomId % boardWidth))
+        #self.mapWindow.xview_moveto(0.5)
+        #self.mapWindow.yview_moveto(0.5)
+        self.mapWindow.xview_moveto(-2 * (1/boardWidth) + (entranceRoomId % boardWidth) * (1/boardWidth))
+        self.mapWindow.yview_moveto(-2 * (1/boardHeight) + (entranceRoomId // boardWidth) * (1/boardHeight))
         self.mapWindow.grid()
 
         quitButton = Button(root, text="Quit", command=root.destroy)
         quitButton.grid()
 
-    def createMapElement(self, id, name, color, isIcon=False) -> int:
+    def createMapElement(self, id: int, name: str, color: str, isIcon: bool = False) -> dict:
 
-        rectSize = self.rectSize
-        iconSize = self.iconSize
-        margin = self.margin
+        rectSize = GUISetups.rectSize
+        iconSize = GUISetups.iconSize
+        margin = GUISetups.margin
 
         iconMargin = 0
         if isIcon:
-            iconMargin = (rectSize - iconSize / 2)
+            iconMargin = (rectSize - iconSize) / 2
 
         x0, y0, x1, y1 = (margin + (id % boardWidth) * rectSize + iconMargin,
                           margin + (id // boardWidth) * rectSize + iconMargin,
@@ -35,7 +40,31 @@ class DrawMap:
                                                    tags=tag
                                                    )
         return {tag: canvasID}
+        
+    def createPlayer(self, id):
 
+        rectSize = GUISetups.rectSize
+        playerSize = GUISetups.playerSize
+        margin = GUISetups.margin
+        iconMargin = (rectSize - playerSize) / 2
+
+        x0, y0, x1, y1 = (margin + (id % boardWidth) * rectSize + rectSize/2 + iconMargin,
+                          margin + (id // boardWidth) * rectSize + rectSize/2 + iconMargin,
+                          margin + (id % boardWidth) * rectSize + rectSize - iconMargin,
+                          margin + (id // boardWidth) * rectSize + rectSize - iconMargin)
+
+        self.photo = PhotoImage(file='Textures/dwarf_80px.png')
+        self.playerTexture = self.mapWindow.create_image(x0, y0, image=self.photo)
+        
+        #self.player = self.mapWindow.create_rectangle(x0, y0, x1, y1,
+        #                                           fill="yellow",
+        #                                           tags='player'
+        #                                           )
+
+        print(self.playerTexture)
+        
+        return self.playerTexture
+    
     def colorizeBorders(self, roomsList, color):
         for direction in WorldDirections:
             self.colorizeRooms(roomsList[direction], color)

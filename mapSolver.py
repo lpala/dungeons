@@ -1,19 +1,28 @@
-from setups import boardHeight, boardWidth, WorldDirections, movementValue
+from setups import boardHeight, boardWidth, WorldDirections, movementValue, RoomStatus
 import random
 
 
 class SolveMap:
-    def __init__(self, entranceRoomId, boardLimits):
+    def __init__(self, entranceDirection, dungeonsBoard, boardLimits):
 
         self.boardLimits = boardLimits
-        self.entranceRoomId = entranceRoomId
-        self.solvedRooms = [self.entranceRoomId]
-        self.solvedRooms = self.solvePath(0)
+        self.entranceRoomId = self.defineStartingPoint(dungeonsBoard, entranceDirection)
 
+        self.solvedRooms = [self.entranceRoomId]
+        self.solveCorridors(dungeonsBoard)
+        self.roomsWithItems = self.spawnItems()
+
+    def defineStartingPoint(self, dungeonsMap, entranceDirection: int):
+        entranceRoomId = random.choice(self.boardLimits[entranceDirection])
+        dungeonsMap[entranceRoomId].isEntrance = True
+        dungeonsMap[entranceRoomId].roomStatus = RoomStatus.Solved.name
+        return entranceRoomId
+
+    def solveCorridors(self, dungeonsMap):
+        self.solvePath(0)
         while len(self.solvedRooms) < (boardHeight * boardWidth) // 2.5:
             self.solveAlterPaths()
-
-        self.roomsWithItems = self.spawnItems()
+        self.verifyExits(dungeonsMap)
 
     def solvePath(self, id):
         counter = 0
@@ -26,7 +35,6 @@ class SolveMap:
             currentRoom += movementValue[dir]
             self.solvedRooms.append(currentRoom)
             counter += 1
-        return self.solvedRooms
 
     def solveAlterPaths(self):
         possibleAlternatives = (random.sample(self.solvedRooms, len(self.solvedRooms) // 2))
@@ -51,10 +59,10 @@ class SolveMap:
                 possibleDirections.append(direction)
         return possibleDirections
 
-    def countNeighbours(self, currentRoom, solvedRooms):
+    def countNeighbours(self, currentRoom, roomsToCheck):
         neighbourCount = 0
         for direction in WorldDirections:
-            if currentRoom + movementValue[direction] in solvedRooms:
+            if currentRoom + movementValue[direction] in roomsToCheck:
                 neighbourCount += 1
         return neighbourCount
 
@@ -66,8 +74,11 @@ class SolveMap:
                 roomsWithItems.append(pickedRoom)
         return roomsWithItems
 
-    def calculateDistance(self):
+    def calculateDistance(self, room1, room2):
         pass
 
-    def verifyExits(self):
-        pass
+    def verifyExits(self, dungeonsMap):
+        for room in self.solvedRooms:
+            for direction in WorldDirections:
+                if room + movementValue[direction] in self.solvedRooms:
+                    dungeonsMap[room].exitsDirections.update({direction.name: room + movementValue[direction]})

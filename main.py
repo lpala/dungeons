@@ -1,54 +1,51 @@
 # from pprint import pprint
 
 import random
-from dungeons import CreateBaseMap
+from dungeons import DungeonBoard
 from drawGUI import DrawMap
 from mapSolver import SolveMap
+from player import Player
+
 
 from tkinter import Tk
-from setups import boardHeight, boardWidth, WorldDirections, RoomType
+from setups import boardHeight, boardWidth, WorldDirections
 
 
-# --------------------DEFINITIONS---------------------------#
+# --------------------DEFINITIONS--------------------------#
 
 
-def verifyExits(directions, limits):
-    for oneRoom in mapTiles['Rooms']:
-        oneRoom['exitsDirections'] = dict()
-        for direction in WorldDirections:
-            if oneRoom['id'] not in limits[direction] and oneRoom['type'] == RoomType.Blind:
-                searchedRoomID = oneRoom['id'] + directions[direction]
-                if mapTiles['Rooms'][searchedRoomID]['type'] == RoomType.Blind:
-                    print(oneRoom['id'], "szukam kierunku", searchedRoomID)
-                    oneRoom['exitsDirections'][searchedRoomID] = direction
-
-
-# --------------------PROGRAM---------------------------#
+# ----------------------PROGRAM----------------------------#
 mapTiles = list()
 entranceDirection = random.choice(list(WorldDirections))
 
 root = Tk()
-root.title('Dungeons Map')
 
-dungeonsMap = CreateBaseMap()
-boardLimits = dungeonsMap.defineBoardLimits()
-entranceRoomId = dungeonsMap.defineStartingPoint(entranceDirection)
+dungeonsBoard = DungeonBoard()
+boardLimits = dungeonsBoard.defineBoardLimits()
 
-solvedMap = SolveMap(entranceRoomId, boardLimits)
-solvedRooms = solvedMap.solvedRooms
-solvedRoomsWithItems = solvedMap.roomsWithItems
+dungeonsMap = SolveMap(entranceDirection, dungeonsBoard, boardLimits)
 
-dungeonCanvas = DrawMap(root, boardWidth, boardHeight)
-rectMap = [dungeonCanvas.createMapElement(id, 'room', 'grey') for id in range(boardWidth * boardHeight)]
-itemIcons = [dungeonCanvas.createMapElement(id, 'chest', 'blue', True) for id in solvedRoomsWithItems]
-print(rectMap)
-print(itemIcons)
+entranceRoomId = dungeonsMap.entranceRoomId
+print('entrance:', entranceRoomId, "width:", boardWidth)
+solvedRooms = dungeonsMap.solvedRooms
+solvedRoomsWithItems = dungeonsMap.roomsWithItems
+
+dungeonCanvas = DrawMap(root, entranceRoomId)
+createMapRects = [dungeonCanvas.createMapElement(id, 'room', 'grey') for id in range(boardWidth * boardHeight)]
+createItemIcons = [dungeonCanvas.createMapElement(id, 'chest', 'blue', True) for id in solvedRoomsWithItems]
+
 dungeonCanvas.colorizeBorders(boardLimits, 'dimgray')
-dungeonCanvas.colorizeRooms(solvedMap.solvedRooms, 'chocolate')
+dungeonCanvas.colorizeRooms(dungeonsMap.solvedRooms, 'chocolate')
 dungeonCanvas.colorizeRooms([entranceRoomId], 'red')
 
-dungeonsMap.saveMapToJSON(dungeonsMap)
+player = dungeonCanvas.createPlayer(entranceRoomId)
+Player(player, root, dungeonCanvas, solvedRooms, boardLimits, entranceRoomId)
 
+dungeonsBoard.saveMapToJSON(dungeonsBoard)
+
+windowTitle = ('Dungeons Map ' + str(boardWidth) + ' x ' + str(boardHeight))
+
+root.title(windowTitle)
 root.mainloop()
 
 # dungeonCanvas.colorizeRooms(solvedMap.roomsWithItems, 'yellow')
