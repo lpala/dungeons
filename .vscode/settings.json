@@ -1,13 +1,14 @@
 {
     "editor.fontFamily": "'Cascadia Code SemiBold'",
     "editor.fontLigatures": true,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "python.linting.flake8Args": [
-        "--ignore=E501,F405"
-    ],
-    "autopep8.args": [
-        "--igonre=501"
-    ],
+    //"python.linting.enabled": true,
+    //"python.linting.flake8Enabled": true,
+
+    "flake8.args": ["--ignore=E501, F405", "--exclude=deprecated/deprecated.py"],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": false
+        
+    },
     "code-runner.runInTerminal": true,
 }

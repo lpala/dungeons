@@ -3,8 +3,9 @@ import random
 
 
 '''Defines board dimensions'''
-boardWidth = random.randint(20, 20)
-boardHeight = random.randint(20, 20)
+tempBoardSize = 15
+boardWidth = random.randint(tempBoardSize, tempBoardSize)
+boardHeight = random.randint(tempBoardSize, tempBoardSize)
 
 
 class GUISetups():

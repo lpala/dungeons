@@ -28,6 +28,7 @@ class DungeonBoard:
 
         self.generatedDungeons = [Dungeon(next(self.xCoords), next(self.yCoords)) for _ in range(boardWidth * boardHeight)]
 
+
     def __getitem__(self, key: int):
         return self.generatedDungeons[key]
 
